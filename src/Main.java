@@ -5,15 +5,14 @@ public class Main
         World world = new World();
         world.setFrameRate(60);
         
-        Entity ballA = new Entity();
-        ballA.setComponent(Component.Position, new Vector(100, 200));
-        ballA.setComponent(Component.Speed, new Vector(10, -100));
-        world.addEntity(ballA);
-    
-        Entity ballB = new Entity();
-        ballB.setComponent(Component.Position, new Vector(700, 100));
-        ballB.setComponent(Component.Speed, new Vector(-10, 100));
-        world.addEntity(ballB);
+        int n = 100;
+        for(int i=0; i<n; ++i)
+        {
+            Entity ball = new Entity();
+            ball.setComponent(Component.Position, new Vector(randFloat(50, 750), randFloat(50, 300)));
+            ball.setComponent(Component.Speed, new Vector(randFloat(-80, 80), randFloat(-100, 100)));
+            world.addEntity(ball);
+        }
     
         PhysicSystem physicSystem = new PhysicSystem();
         physicSystem.setGravity(new Vector(0, 98));
@@ -30,5 +29,10 @@ public class Main
         {
             e.printStackTrace();
         }
+    }
+    
+    public static float randFloat(float min, float max)
+    {
+        return (float)Math.random() * (max-min) + min;
     }
 }
