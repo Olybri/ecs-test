@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 
 public class RenderTarget extends JPanel
 {
-    BufferedImage bufferImage;
-    Graphics2D graphics;
+    private BufferedImage bufferImage;
+    private Graphics2D graphics;
     
     public RenderTarget(int width, int height)
     {
