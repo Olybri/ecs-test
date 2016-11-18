@@ -16,6 +16,12 @@ public class Main
             ball.setComponent(Component.Drawable, new OvalShape(new Vector(10, 10), Color.gray));
             world.addEntity(ball);
         }
+        
+        Entity line = new Entity();
+        line.setComponent(Component.Drawable, new LineShape(new Vector(10, 10), new Vector(100, 10)));
+        line.setComponent(Component.Position, new Vector(0,0));
+        line.setComponent(Component.Speed, new Vector(10,0));
+        world.addEntity(line);
     
         PhysicSystem physicSystem = new PhysicSystem();
         physicSystem.setGravity(new Vector(0, 98));

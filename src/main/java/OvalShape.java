@@ -11,7 +11,7 @@ public class OvalShape extends Shape
     
     public OvalShape(Vector size, Color color)
     {
-        this.size = size;
+        this(size);
         this.color = color;
     }
     
