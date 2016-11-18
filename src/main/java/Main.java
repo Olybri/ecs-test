@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Main
 {
     public static void main(String[] args)
@@ -11,6 +13,7 @@ public class Main
             Entity ball = new Entity();
             ball.setComponent(Component.Position, new Vector(randFloat(50, 750), randFloat(50, 300)));
             ball.setComponent(Component.Speed, new Vector(randFloat(-80, 80), randFloat(-100, 100)));
+            ball.setComponent(Component.Drawable, new OvalShape(new Vector(10, 10), Color.gray));
             world.addEntity(ball);
         }
     

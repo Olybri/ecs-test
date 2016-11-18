@@ -27,10 +27,11 @@ public class RenderSystem extends BaseSystem
         
         for(Entity entity : entities)
         {
-            if(!entity.hasComponents(Component.Position, Component.Speed))
+            if(!entity.hasComponents(Component.Position, Component.Drawable))
                 break;
     
-            target.drawOval(entity.getComponent(Component.Position, Vector.class), 10, 10, Color.gray);
+            target.draw(entity.getComponent(Component.Drawable, Drawable.class),
+                    entity.getComponent(Component.Position, Vector.class));
         }
         
         target.repaint();

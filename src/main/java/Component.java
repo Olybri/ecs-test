@@ -8,4 +8,5 @@ public class Component
     
     public final static Component Position = new Component(Vector.class);
     public final static Component Speed = new Component(Vector.class);
+    public final static Component Drawable = new Component(Drawable.class);
 }

@@ -22,10 +22,9 @@ public class RenderTarget extends JPanel
         graphics.fillRect(0, 0, width, height);
     }
     
-    public void drawOval(Vector v, int w, int h, Color color)
+    public void draw(Drawable drawable, Vector position)
     {
-        graphics.setColor(color);
-        graphics.fillOval((int)v.x, (int)v.y, w, h);
+        drawable.draw(graphics, position);
     }
     
     public void clear(Color color)
