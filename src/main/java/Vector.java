@@ -21,6 +21,12 @@ public class Vector
         y += v.y;
     }
     
+    public void mul(Vector v)
+    {
+        x *= v.x;
+        y *= v.y;
+    }
+    
     public void scale(float r)
     {
         x *= r;
@@ -30,5 +36,10 @@ public class Vector
     public static Vector scale(Vector v, float r)
     {
         return new Vector(v.x * r, v.y * r);
+    }
+    
+    public static Vector mul(Vector u, Vector v)
+    {
+        return new Vector(u.x * v.x, u.y * v.y);
     }
 }
