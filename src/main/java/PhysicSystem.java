@@ -3,10 +3,16 @@ import java.util.ArrayList;
 public class PhysicSystem extends BaseSystem
 {
     private Vector gravity = new Vector(0f, 0f);
+    private Box boundary = null;
     
     public void setGravity(Vector v)
     {
         gravity = v;
+    }
+    
+    public void setBoundary(Box b)
+    {
+        boundary = b;
     }
     
     @Override
@@ -23,22 +29,38 @@ public class PhysicSystem extends BaseSystem
             speed.add(Vector.scale(gravity, elapsedTime));
             position.add(Vector.scale(speed, elapsedTime));
             
-            if(position.y >= 440)
+            if(boundary != null)
             {
-                position.y = 440;
-                speed.y *= -0.8;
-                speed.x *= 0.995;
-            }
-            if(position.x <= 0)
-            {
-                position.x = 0;
-                speed.x *= -1;
-            }
-    
-            if(position.x >= 790)
-            {
-                position.x = 790;
-                speed.x *= -1;
+                float diameter = 5;
+                float friction = 0.8f;
+                
+                if(position.y >= boundary.max.y - diameter)
+                {
+                    position.y = boundary.max.y - diameter;
+                    speed.y *= -friction;
+                    speed.x *= 0.995;
+                }
+                
+                if(position.y < boundary.min.y)
+                {
+                    position.y = boundary.min.y;
+                    speed.y *= -friction;
+                    speed.x *= 0.995;
+                }
+                
+                if(position.x <= boundary.min.x)
+                {
+                    position.x = boundary.min.x;
+                    speed.x *= -friction;
+                    speed.y *= 0.995;
+                }
+                
+                if(position.x >= boundary.max.x - diameter)
+                {
+                    position.x = boundary.max.x - diameter;
+                    speed.x *= -friction;
+                    speed.y *= 0.995;
+                }
             }
             
             entity.setComponent(Component.Position, position);
